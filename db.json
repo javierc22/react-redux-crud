@@ -1,21 +1,3 @@
-# CRUD - React, Redux, REST API & Axios
-
-Instalar **react router dom**
-~~~
-npm i react-router-dom
-~~~
-
-# Usando Json Server
-
-Simulador de API: https://github.com/typicode/json-server
-
-Instalar
-~~~
-npm install -g json-server
-~~~
-
-Crear un archivo con el nombre **db.json** con un contenido
-~~~json
 {
   "productos": [
     {
@@ -45,9 +27,3 @@ Crear un archivo con el nombre **db.json** con un contenido
     }
   ]
 }
-~~~
-
-Ejecutar archivo **db.json** con JSON Server en el puerto 4000
-~~~
-json-server db.json --port 4000
-~~~
