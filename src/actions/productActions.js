@@ -6,7 +6,29 @@ import {
 
 // Crear nuevos productos
 export function createNewProductAction(product) {
-  return () => {
-    console.log(product);
+  return (dispatch) => {
+    dispatch(addProduct());
+
+    try {
+      dispatch(addProductSuccess(product));
+    } catch (error) {
+      dispatch(addProducterror(true));
+    }
   }
 }
+
+const addProduct = () => ({
+  type: ADD_PRODUCT,
+  payload: true
+});
+
+// Si el producto se guarda en DB exitosamente
+const addProductSuccess = product => ({
+  type: ADD_PRODUCT_SUCCESS,
+  payload: product
+});
+
+// Si hubo un error
+const addProducterror = status => ({
+
+});
