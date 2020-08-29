@@ -1,7 +1,10 @@
 import { 
   ADD_PRODUCT,
   ADD_PRODUCT_SUCCESS,
-  ADD_PRODUCT_ERROR
+  ADD_PRODUCT_ERROR,
+  GET_PRODUCTS,
+  GET_PRODUCTS_SUCCESS,
+  GET_PRODUCTS_ERROR
 } from "../types";
 
 import clientAxios from '../config/axios';
@@ -29,7 +32,7 @@ export function createNewProductAction(product) {
     } catch (error) {
       console.log(error);
       // Si hubo un error, cambiar el state
-      dispatch(addProducterror(true));
+      dispatch(addProductError(true));
 
       // alerta de error
       Swal.fire({
@@ -53,7 +56,19 @@ const addProductSuccess = product => ({
 });
 
 // Si hubo un error
-const addProducterror = status => ({
+const addProductError = status => ({
   type: ADD_PRODUCT_ERROR,
   payload: status
+});
+
+// Función que descarga los productos de la base de datos
+export function getProductsAction() {
+  return async (dispatch) => {
+    dispatch(getProducts());
+  }
+}
+
+const getProducts = () => ({
+  type: GET_PRODUCTS,
+  payload: true
 });
