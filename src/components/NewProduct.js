@@ -11,6 +11,10 @@ const NewProduct = () => {
   // Utilizar useDispach
   const dispatch = useDispatch();
 
+  // Acceder al State del Store
+  const loading = useSelector(state => state.products.loading);
+  const error = useSelector(state => state.products.error);
+
   // Llamar el Action de productAction
   const addProduct = (product) => dispatch(createNewProductAction(product));
 
@@ -66,6 +70,9 @@ const NewProduct = () => {
                 className="btn btn-primary font-weight-bold text-uppercase d-block w-100"
               >Agregar</button>
             </form>
+
+            { loading ? <p>Cargando...</p> : null }
+            { error ? <p className="alert alert-danger p2 mt-4 text-center">Hubo un error</p> : null}
           </div>
         </div>
       </div>
