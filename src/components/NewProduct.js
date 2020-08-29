@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 // Actions de Redux
 import { createNewProductAction } from '../actions/productActions';
 
-const NewProduct = () => {
+const NewProduct = ({history}) => {
   // State del componente
   const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
@@ -29,6 +29,8 @@ const NewProduct = () => {
 
     // Crear el nuevo producto
     addProduct({ name, price });
+    // redireccionar a '/'
+    history.push('/');
   }
   
   return (
