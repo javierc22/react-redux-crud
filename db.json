@@ -24,6 +24,11 @@
       "nombre": "Jugo de Fresa",
       "precio": "200",
       "id": 5
+    },
+    {
+      "name": "Torta de Naranja",
+      "price": 8000,
+      "id": 6
     }
   ]
 }
