@@ -51,3 +51,14 @@ Ejecutar archivo **db.json** con JSON Server en el puerto 4000
 ~~~
 json-server db.json --port 4000
 ~~~
+
+# Configurar Redux
+
+Instalar Redux
+~~~
+npm i react-redux redux redux-thunk
+~~~
+
+Instalar extensión de Chrome **Redux DevTools Ofrecido por: remotedevio**
+
+Documentación Redux devtools extension: https://github.com/zalmoxisus/redux-devtools-extension
