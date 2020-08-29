@@ -30,5 +30,6 @@ const addProductSuccess = product => ({
 
 // Si hubo un error
 const addProducterror = status => ({
-
+  type: ADD_PRODUCT_ERROR,
+  payload: status
 });
