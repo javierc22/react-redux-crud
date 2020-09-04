@@ -65,10 +65,28 @@ const addProductError = status => ({
 export function getProductsAction() {
   return async (dispatch) => {
     dispatch(getProducts());
+
+    try {
+      const response = await clientAxios.get('/productos');
+      dispatch(getProductsSuccess(response.data));
+    } catch (error) {
+      console.log(error);
+      dispatch(getProductsError());
+    }
   }
 }
 
 const getProducts = () => ({
   type: GET_PRODUCTS,
+  payload: true
+});
+
+const getProductsSuccess = products => ({
+  type: GET_PRODUCTS_SUCCESS,
+  payload: products
+});
+
+const getProductsError = () => ({
+  type: GET_PRODUCTS_ERROR,
   payload: true
 });
