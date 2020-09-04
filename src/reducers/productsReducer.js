@@ -4,7 +4,10 @@ import {
   ADD_PRODUCT_ERROR,
   GET_PRODUCTS,
   GET_PRODUCTS_SUCCESS,
-  GET_PRODUCTS_ERROR
+  GET_PRODUCTS_ERROR,
+  GET_PRODUCT_DELETE,
+  DELETE_PRODUCT_ERROR,
+  DELETE_PRODUCT_SUCCESS
 } from "../types";
 
 
@@ -12,7 +15,8 @@ import {
 const initialState = {
   products: [],
   error: null,
-  loading: false
+  loading: false,
+  productDelete: null
 }
 
 export default function( state = initialState, action ) {
@@ -45,6 +49,12 @@ export default function( state = initialState, action ) {
         loading: false,
         error: null,
         products: action.payload
+      }
+
+    case GET_PRODUCT_DELETE:
+      return {
+        ...state,
+        productDelete: action.payload
       }
   
     default:

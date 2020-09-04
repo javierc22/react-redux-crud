@@ -4,7 +4,10 @@ import {
   ADD_PRODUCT_ERROR,
   GET_PRODUCTS,
   GET_PRODUCTS_SUCCESS,
-  GET_PRODUCTS_ERROR
+  GET_PRODUCTS_ERROR,
+  GET_PRODUCT_DELETE,
+  DELETE_PRODUCT_ERROR,
+  DELETE_PRODUCT_SUCCESS
 } from "../types";
 
 import clientAxios from '../config/axios';
@@ -61,6 +64,7 @@ const addProductError = status => ({
   payload: status
 });
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Función que descarga los productos de la base de datos
 export function getProductsAction() {
   return async (dispatch) => {
@@ -89,4 +93,17 @@ const getProductsSuccess = products => ({
 const getProductsError = () => ({
   type: GET_PRODUCTS_ERROR,
   payload: true
+});
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Selecciona y elimina el producto
+export function deleteProductAction(id) {
+  return async (dispatch) => {
+    dispatch(getProductDelete(id));
+  }
+}
+
+const getProductDelete = id => ({
+  type: GET_PRODUCT_DELETE,
+  payload: id
 });
