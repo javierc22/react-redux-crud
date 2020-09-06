@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import { editProductAction } from '../actions/productActions';
 
 const EditProduct = () => {
+  // State de producto
+  const [product, setProduct] = useState({
+    name: '',
+    price: ''
+  });
+
   // Producto a editar
-  const product = useSelector( state => state.products.productEdit );
+  const productEdit = useSelector( state => state.products.productEdit );
 
-  if (!product) return null;
+  //if (!product) return null; => Para usar useEffect no tiene que existir un 'return null;'
 
-  const { name, price, id } = product;
+  // Llenar el state automáticamente
+  useEffect(() => {
+    setProduct(productEdit);
+  }, [productEdit])
+
+  const { name, price} = product;
+
+  // Leer los datos del formulario
+  const onChangeFormulario = e => {
+    setProduct({
+      ...product,
+      [e.target.name] : e.target.value
+    })
+  }
 
   const submitEditProduct = e => {
     e.preventDefault();
@@ -33,6 +52,7 @@ const EditProduct = () => {
                   placeholder="Nombre Producto"
                   name="name"
                   value={name}
+                  onChange={onChangeFormulario}
                 />
               </div>
 
@@ -44,6 +64,7 @@ const EditProduct = () => {
                     placeholder="Precio Producto"
                     name="price"
                     value={price}
+                    onChange={onChangeFormulario}
                 />
               </div>
 
