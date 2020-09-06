@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 // Redux
 import { useDispatch } from 'react-redux';
-import { deleteProductAction } from '../actions/productActions';
+import { deleteProductAction, getProductEdit } from '../actions/productActions';
 
 const Product = ({product}) => {
   const { id, name, price } = product;
@@ -34,6 +34,7 @@ const Product = ({product}) => {
 
   // Función que redirige de forma programada
   const redirectEdit = product => {
+    dispatch(getProductEdit(product));
     history.push(`/productos/editar/${product.id}`);
   }
 

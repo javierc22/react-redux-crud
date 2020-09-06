@@ -7,7 +7,10 @@ import {
   GET_PRODUCTS_ERROR,
   GET_PRODUCT_DELETE,
   DELETE_PRODUCT_ERROR,
-  DELETE_PRODUCT_SUCCESS
+  DELETE_PRODUCT_SUCCESS,
+  GET_PRODUCT_EDIT,
+  EDIT_PRODUCT_SUCCESS,
+  EDIT_PRODUCT_ERROR
 } from "../types";
 
 import clientAxios from '../config/axios';
@@ -129,4 +132,17 @@ const deleteProductSuccess = () => ({
 const deleteProductError = () => ({
   type: DELETE_PRODUCT_ERROR,
   payload: true
+});
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Selecciona y Edita producto
+export function getProductEdit(product) {
+  return dispatch => {
+    dispatch(getProductEditAction(product));
+  }
+}
+
+const getProductEditAction = product => ({
+  type: GET_PRODUCT_EDIT,
+  payload: product
 });

@@ -7,7 +7,10 @@ import {
   GET_PRODUCTS_ERROR,
   GET_PRODUCT_DELETE,
   DELETE_PRODUCT_ERROR,
-  DELETE_PRODUCT_SUCCESS
+  DELETE_PRODUCT_SUCCESS,
+  GET_PRODUCT_EDIT,
+  EDIT_PRODUCT_SUCCESS,
+  EDIT_PRODUCT_ERROR
 } from "../types";
 
 
@@ -16,7 +19,8 @@ const initialState = {
   products: [],
   error: null,
   loading: false,
-  productDelete: null
+  productDelete: null,
+  productEdit: null
 }
 
 export default function( state = initialState, action ) {
@@ -63,6 +67,12 @@ export default function( state = initialState, action ) {
         ...state,
         products: state.products.filter( product => product.id !== state.productDelete),
         productDelete: null
+      }
+
+    case GET_PRODUCT_EDIT:
+      return {
+        ...state,
+        productEdit: action.payload
       }
   
     default:
