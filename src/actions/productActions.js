@@ -10,7 +10,8 @@ import {
   DELETE_PRODUCT_SUCCESS,
   GET_PRODUCT_EDIT,
   EDIT_PRODUCT_SUCCESS,
-  EDIT_PRODUCT_ERROR
+  EDIT_PRODUCT_ERROR,
+  START_PRODUCT_EDIT
 } from "../types";
 
 import clientAxios from '../config/axios';
@@ -144,5 +145,24 @@ export function getProductEdit(product) {
 
 const getProductEditAction = product => ({
   type: GET_PRODUCT_EDIT,
+  payload: product
+});
+
+// Edita un registro en la API y State
+export function editProductAction(product) {
+  return async (dispatch) => {
+    dispatch(editProduct(product));
+
+    try {
+      const result = await clientAxios.put(`/productos/${product.id}`, product);
+      console.log(result);
+    } catch (error) {
+      
+    }
+  }
+}
+
+const editProduct = product => ({
+  type: START_PRODUCT_EDIT,
   payload: product
 });

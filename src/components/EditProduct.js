@@ -1,5 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
+import { editProductAction } from '../actions/productActions';
 
 const EditProduct = () => {
   // Producto a editar
@@ -8,6 +9,11 @@ const EditProduct = () => {
   if (!product) return null;
 
   const { name, price, id } = product;
+
+  const submitEditProduct = e => {
+    e.preventDefault();
+    editProductAction();
+  }
 
   return (
     <div className="row justify-content-center">
@@ -18,7 +24,7 @@ const EditProduct = () => {
               Editar Producto
             </h2>
 
-            <form>
+            <form onSubmit={ submitEditProduct }>
               <div className="form-group">
                 <label>Nombre producto</label>
                 <input
