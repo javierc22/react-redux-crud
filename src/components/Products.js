@@ -13,7 +13,7 @@ const Products = () => {
     // Consultar API
     const loadProducts = () => dispatch(getProductsAction());
     loadProducts();
-
+    // eslint-disable-next-line
   }, []);
 
   // Obtener el state
@@ -43,8 +43,8 @@ const Products = () => {
         </thead>
         <tbody>
           { products.length === 0 ? null : (
-              products.map(product => (
-                <Product key={product.id} product={product} />
+              products.map((product, index) => (
+                <Product key={index} product={product} />
               ))
           )}
         </tbody>

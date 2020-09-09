@@ -1,6 +1,6 @@
 import React from 'react';
 import Swal from 'sweetalert2';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 // Redux
 import { useDispatch } from 'react-redux';
@@ -39,7 +39,7 @@ const Product = ({product}) => {
   }
 
   return (
-    <tr>
+    <tr key={product.id}>
       <td>{name}</td>
       <td>
         <span className="font-weight-bold">
