@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 // Actions de Redux
 import { createNewProductAction } from '../actions/productActions';
-import { showAlertAction } from '../actions/alertAction';
+import { showAlertAction, hideAlertAction } from '../actions/alertAction';
 
 const NewProduct = ({history}) => {
   // State del componente
@@ -36,6 +36,8 @@ const NewProduct = ({history}) => {
       return;
     }
 
+    // Si no hay errores
+    dispatch(hideAlertAction());
     // Crear el nuevo producto
     addProduct({ name, price });
     // redireccionar a '/'
